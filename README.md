@@ -13,7 +13,7 @@ Check out the LIVE project [here](https://josephtkim.github.io/sudoku-solver/)
 ![Solved example](./src/images/solver-image.png)
 
 ## Features  
-Choose algorithm to solve the Sudoku.  
-Displays the number of iterations.  
-Keeps track of the initially provided clues.  
-Use arrow keys to navigate the board.  
+* Choose algorithm to solve the Sudoku.  
+* Displays the number of iterations.  
+* Keeps track of the initially provided clues.  
+* Use arrow keys to navigate the board.  
