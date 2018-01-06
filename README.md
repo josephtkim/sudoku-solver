@@ -10,4 +10,4 @@ The [Brute Force](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms) backt
 
 Check out the LIVE project [here](https://josephtkim.github.io/sudoku-solver/).
 
-![Solved example](josephtkim.github.com/sudoku-solver/src/images/solver-image.png)
+![Solved example](./src/images/solver-image.png)
