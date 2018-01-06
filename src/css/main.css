@@ -1,0 +1,193 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.project-container {
+  width: 1000px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #f2f2f2, white);
+  outline: none;
+}
+
+.title-container {
+  font-family: sans-serif;
+  width: 300px;
+  height: 100px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-container h1 {
+  font-size: 40px;
+  color: #a6a6a6;
+  text-shadow: 1px 2px #595959;
+}
+
+/* Main Container */
+.main-container {
+  width: 840px;
+  height: 560px;
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Grid Section */
+.grid-container {
+  width: 475px;
+  height: 475px;
+}
+
+tr, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  border: 5px solid black;
+  border-collapse: collapse;
+}
+
+.square:nth-child(3), .square:nth-child(6) {
+  border-right: 4px solid black;
+}
+
+tr:nth-child(3) td, tr:nth-child(6) td {
+  border-bottom: 4px solid black;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.square-value {
+  font-size: 32px;
+}
+
+.violation-square {
+  color: red;
+}
+
+.clue {
+  background-color: #e6e6e6;
+}
+
+.active {
+  background-color: #ffff33;
+}
+
+/* Button Container */
+.button-container {
+  width: 264px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.BF-container, .DLX-container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  outline: none;
+}
+
+.button {
+  border: 1px solid black;
+  font-size: 22px;
+
+  background: linear-gradient(to bottom right, #cccccc, #f2f2f2);
+
+  box-shadow: 0px 2px black;
+  color: black;
+  height: 56px;
+}
+
+.button:hover {
+  background: linear-gradient(to bottom, #e6e6e6, white);
+}
+
+.button:active {
+  margin-top: 4px;
+  box-shadow: 0px 0px black;
+}
+
+.algorithm-buttons {
+  width: 260px;
+  height: 150px;
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.algo-button {
+  width: 260px;
+}
+
+.current-algo {
+  background: linear-gradient(to bottom, #b3b3b3, gray);
+}
+
+.current-algo:hover {
+  background: linear-gradient(to bottom, #bfbfbf, #8c8c8c);
+}
+
+.iteration-container {
+  height: 110px;
+  width: 260px;
+  display: flex;
+  font-size: 26px;
+  align-items: center;
+}
+
+.iteration-display {
+  width: 260px;
+  height: 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.iteration-title, .iteration-count {
+  height: 40px;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-buttons {
+  width: 260px;
+  height: 80px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-button, .solve-button {
+  width: 124px;
+}
