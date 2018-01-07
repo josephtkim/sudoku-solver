@@ -10,7 +10,7 @@ Utilizes two algorithms for solving:
 
 Check out the LIVE project [here](https://josephtkim.github.io/sudoku-solver/)
 
-![Solved example](./src/images/solver-image.png)
+![Solved example](./src/images/sudoku_solver.png)
 
 ## Features  
 * Choose algorithm to solve the Sudoku.  

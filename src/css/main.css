@@ -1,6 +1,4 @@
 html {
-  height: 100%;
-  background: linear-gradient(to bottom, #f2f2f2, white);
 }
 
 body {
@@ -9,13 +7,10 @@ body {
   font-family: sans-serif;
 }
 
-.project-wrapper {
-  margin: 0 auto;
-  width: 800px;
-  height: 1000px;
-}
-
 .project-container {
+  background: linear-gradient(to bottom, #f2f2f2, white);
+
+  margin: 0 auto;
   width: 800px;
   padding: 10px;
   display: flex;
@@ -229,4 +224,98 @@ button {
   justify-content: center;
 
   user-select: none;
+}
+
+
+/* Rearrange on mobile */
+@media (max-width: 996px) {
+  .project-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-container {
+    flex-direction: column;
+    height: 540px;
+    width: 100%;
+  }
+
+  .button {
+    height: 54px;
+    width: 110px;
+    font-size: 18px;
+  }
+
+  .button-container {
+    height: 130px;
+    width: 376px;
+    flex-direction: row;
+  }
+
+  .algorithm-buttons, .bottom-buttons {
+    width: 220px;
+    height: 130px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .number-container {
+    padding: 10px;
+    width: 280px;
+    height: 90px;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .number-button {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+
+  .iteration-container {
+    height: 110px;
+    width: 110px;
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+  }
+
+  .iteration-display {
+    width: 110px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .iteration-title, .iteration-count {
+    height: 40px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Grid Section */
+  .grid-container {
+    width: 385px;
+    height: 385px;
+  }
+
+  .title-container {
+    display: none;
+  }
+
+  .square {
+    height: 40px;
+    width: 40px;
+  }
+
+  .square-value {
+    font-size: 28px;
+  }
 }
