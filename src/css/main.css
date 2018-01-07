@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.project-wrapper {
+  width: 100%;
+}
+
 .project-container {
   width: 1000px;
   padding: 20px;

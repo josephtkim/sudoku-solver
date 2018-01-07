@@ -247,29 +247,31 @@ class App extends Component {
 
   render() {
     return (
-      <div
-        className="project-container"
-        onKeyDown={this.keyBoardPress}
-        tabIndex="0"
-      >
-        <Title />
-        <MainContainer>
-          <GridContainer
-            info={this.state}
-            selectSquare={this.selectSquare}
-          />
+      <div className="project-wrapper">
+        <div
+          className="project-container"
+          onKeyDown={this.keyBoardPress}
+          tabIndex="0"
+        >
+          <Title />
+          <MainContainer>
+            <GridContainer
+              info={this.state}
+              selectSquare={this.selectSquare}
+            />
 
-          <ButtonContainer
-            pressBruteForce={this.setBruteForce}
-            pressDLX={this.setDLX}
-            solve={this.solve}
-            clear={this.clear}
-            iterations={this.state.iterations}
-            algorithm={this.state.algorithm}
-          />
-        </MainContainer>
+            <ButtonContainer
+              pressBruteForce={this.setBruteForce}
+              pressDLX={this.setDLX}
+              solve={this.solve}
+              clear={this.clear}
+              iterations={this.state.iterations}
+              algorithm={this.state.algorithm}
+            />
+          </MainContainer>
 
-        <NumberContainer onClick={this.clickNumber} />
+          <NumberContainer onClick={this.clickNumber} />
+        </div>
       </div>
     )
   }
