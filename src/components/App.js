@@ -14,6 +14,7 @@ import ButtonContainer from './ButtonContainer';
 import MainContainer from './MainContainer';
 import Grid from './Grid';
 import GridContainer from './GridContainer';
+import NumberContainer from './NumberContainer';
 
 const emptyGrid = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -48,6 +49,7 @@ class App extends Component {
     this.selectSquare = this.selectSquare.bind(this);
     this.keyBoardPress = this.keyBoardPress.bind(this);
     this.checkGridViolations = this.checkGridViolations.bind(this);
+    this.clickNumber = this.clickNumber.bind(this);
   }
 
   checkGridViolations() { // Function to check and update grid for violations
@@ -128,6 +130,42 @@ class App extends Component {
     })
   }
 
+  // Number pad
+  clickNumber(e) {
+    e.preventDefault();
+
+    var currentCoordinates = this.state.currentSquare;
+    var curRow = currentCoordinates[0];
+    var curCol = currentCoordinates[1];
+    var newVal;
+
+    let gridCopy = getGridCopy(this.state.currentGrid);
+    let clueGridCopy = getGridCopy(this.state.clueGrid);
+
+    // Pressed number between 1-9
+    if (parseInt(e.target.id) >= 1 && parseInt(e.target.id) <= 9) {
+      newVal = parseInt(e.target.id);
+      gridCopy[curRow-1][curCol-1] = newVal;
+      clueGridCopy[curRow-1][curCol-1] = "C";
+    }
+
+    // Backspace or Delete
+    if (e.target.id === "X") {
+      gridCopy[curRow-1][curCol-1] = 0;
+      clueGridCopy[curRow-1][curCol-1] = 0;
+    }
+
+    var violationInfo = checkViolation(gridCopy);
+    var currentViolationFlag = violationInfo[0];
+    var currentViolationGrid = violationInfo[1];
+
+    this.setState({
+      currentGrid: gridCopy,
+      violationFlag: currentViolationFlag,
+      violationGrid: currentViolationGrid,
+      clueGrid: clueGridCopy
+    })
+  }
 
   keyBoardPress(e) {
     e.preventDefault();
@@ -230,6 +268,8 @@ class App extends Component {
             algorithm={this.state.algorithm}
           />
         </MainContainer>
+
+        <NumberContainer onClick={this.clickNumber} />
       </div>
     )
   }

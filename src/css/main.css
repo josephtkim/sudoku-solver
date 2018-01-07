@@ -73,6 +73,8 @@ tr:nth-child(3) td, tr:nth-child(6) td {
   text-align: center;
   vertical-align: middle;
   background-color: white;
+
+  user-select: none;
 }
 
 .square-value {
@@ -190,4 +192,31 @@ button {
 
 .clear-button, .solve-button {
   width: 124px;
+}
+
+/* Number pad for mobile */
+.number-container {
+  width: 790px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number-button {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+
+  background-color: white;
+  border: 2px solid gray;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
 }
