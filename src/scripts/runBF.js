@@ -3,7 +3,7 @@ function runBF(grid) {
   // Functions to check for valid placement
   function usedInRow(grid, row, col, number) {
     for (var c = 0; c < grid.length; c++) {
-      if (grid[row][c] == number) {
+      if (grid[row][c] === number) {
         return true;
       }
     }
@@ -11,7 +11,7 @@ function runBF(grid) {
   }
   function usedInCol(grid, row, col, number) {
     for (var r = 0; r < grid.length; r++) {
-      if (grid[r][col] == number) {
+      if (grid[r][col] === number) {
         return true;
       }
     }
@@ -24,8 +24,8 @@ function runBF(grid) {
 
     for (var r = subrow; r < subrow + root; r++) {
       for (var c = subcol; c < subcol + root; c++) {
-        if (r != row || c!= col) {
-          if (grid[r][c] == number) {
+        if (r !== row || c!== col) {
+          if (grid[r][c] === number) {
             return true;
           }
         }
@@ -34,6 +34,7 @@ function runBF(grid) {
     return false;
   }
   function isValidPlacement(grid, row, col, number) {
+    namespace.steps += 1;
     return usedInRow(grid, row, col, number) === false &&
           usedInCol(grid, row, col, number) === false &&
           usedInSubGrid(grid, row, col, number) === false;
@@ -46,7 +47,7 @@ function runBF(grid) {
 
     for (var r = 0; r < grid.length; r++) {
       for (var c = 0; c < grid.length; c++) {
-        if (grid[r][c] == 0) {
+        if (grid[r][c] === 0) {
           coordinates[0] = r;
           coordinates[1] = c;
           return coordinates;
@@ -58,18 +59,11 @@ function runBF(grid) {
 
   // Recursive function to solve sudoku puzzle
   function solveSudoku(grid) {
-    namespace.steps += 1;
-
-    if (namespace.steps > 999900) {
-      return false;
-    }
-
     var emptyCell = getEmptySquare(grid);
     var emptyRow = emptyCell[0];
     var emptyCol = emptyCell[1];
 
-    if (emptyRow === -1 && emptyCol === -1) {
-      namespace.steps -= 1;
+    if (emptyRow === -1 && emptyCol === -1) {            
       return true;
     }
 

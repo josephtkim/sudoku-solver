@@ -37,8 +37,8 @@ function checkViolation(grid) {
   	var current = grid[row][col];
   	if (current > 0 && current < 10) {
     	for (var c = 0; c < grid.length; c++) {
-    		if (c != col) {
-    			if (current == grid[row][c]) {
+    		if (c !== col) {
+    			if (current === grid[row][c]) {
     				return false;
     			}
     		}
@@ -51,8 +51,8 @@ function checkViolation(grid) {
   	var current = grid[row][col];
   	if (current > 0 && current < 10) {
     	for (var r = 0; r < grid.length; r++) {
-    		if (r != row) {
-    			if (current == grid[r][col]) {
+    		if (r !== row) {
+    			if (current === grid[r][col]) {
     				return false;
     			}
     		}
@@ -68,8 +68,8 @@ function checkViolation(grid) {
   	if (grid[row][col] > 0 && grid[row][col] < 10) {
     	for (var r = subrow; r < subrow + root; r++) {
     		for (var c = subcol; c < subcol + root; c++) {
-    			if (r != row || c != col) {
-    				if (grid[r][c] == grid[row][col]) {
+    			if (r !== row || c !== col) {
+    				if (grid[r][c] === grid[row][col]) {
     					return false;
     				}
     			}

@@ -226,6 +226,10 @@ button {
   user-select: none;
 }
 
+.number-button:hover {
+  background-color: #e6e6e6;
+}
+
 
 /* Rearrange on mobile */
 @media (max-width: 996px) {

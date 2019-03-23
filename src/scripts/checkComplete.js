@@ -21,8 +21,8 @@ function checkComplete(grid) {
   function checkRow(grid, row, col) {
   	var current = grid[row][col];
   	for (var c = 0; c < grid.length; c++) {
-  		if (c != col) {
-  			if (current == grid[row][c]) {
+  		if (c !== col) {
+  			if (current === grid[row][c]) {
   				return false;
   			}
   		}
@@ -33,8 +33,8 @@ function checkComplete(grid) {
   function checkCol(grid, row, col) {
   	var current = grid[row][col];
   	for (var r = 0; r < grid.length; r++) {
-  		if (r != row) {
-  			if (current == grid[r][col]) {
+  		if (r !== row) {
+  			if (current === grid[r][col]) {
   				return false;
   			}
   		}
@@ -52,8 +52,8 @@ function checkComplete(grid) {
   	var subcol = Math.floor(col / root) * root;
   	for (var r = subrow; r < subrow + root; r++) {
   		for (var c = subcol; c < subcol + root; c++) {
-  			if (r != row || c != col) {
-  				if (grid[r][c] == grid[row][col]) {
+  			if (r !== row || c !== col) {
+  				if (grid[r][c] === grid[row][col]) {
   					return false;
   				}
   			}

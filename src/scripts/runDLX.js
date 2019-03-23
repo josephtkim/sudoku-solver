@@ -3,13 +3,13 @@ function runDLX(inputBoard) {
   // ==== Code for Sparse Matrix ====
   class Node {
     constructor(row, col) {
-      this.left;
-      this.right;
-      this.up;
-      this.down;
+      this.left = null;
+      this.right = null;
+      this.up = null;
+      this.down = null;
       this.row = row;
       this.col = col;
-      this.colHead;
+      this.colHead = null;
     }
   }
   class colNode extends Node { // Special node for column heads
@@ -97,25 +97,25 @@ function runDLX(inputBoard) {
           var col = curNode.col;
           // Searching for nonempty node above
           var currow = getUp(row, rowCount);
-          while (matrix[currow][col] === 0 && currow != row) {
+          while (matrix[currow][col] === 0 && currow !== row) {
             currow = getUp(currow, rowCount);
           }
           curNode.up = sparseMatrix[currow][col];
           // Searching for nonempty node below
           var currow = getDown(row, rowCount);
-          while (matrix[currow][col] === 0 && currow != row) {
+          while (matrix[currow][col] === 0 && currow !== row) {
             currow = getDown(currow, rowCount);
           }
           curNode.down = sparseMatrix[currow][col];
           // Searching for nonempty node to the left
           var curcol = getLeft(col, colCount);
-          while (matrix[row][curcol] === 0 && curcol != col) {
+          while (matrix[row][curcol] === 0 && curcol !== col) {
             curcol = getLeft(curcol, colCount);
           }
           curNode.left = sparseMatrix[row][curcol];
           // Searching for nonempty node to the right
           var curcol = getRight(col, colCount);
-          while (matrix[row][curcol] === 0 && curcol != col) {
+          while (matrix[row][curcol] === 0 && curcol !== col) {
             curcol = getRight(curcol, colCount);
           }
           curNode.right = sparseMatrix[row][curcol];
@@ -162,7 +162,7 @@ function runDLX(inputBoard) {
     var header = h;
     var min = h.right;
     header = min.right;
-    while (header != h) {
+    while (header !== h) {
       if (header.nodeCount < min.nodeCount) {
         min = header;
       }
@@ -173,32 +173,34 @@ function runDLX(inputBoard) {
 
   // Function to cover a specified node in sparse matrix
   function cover(node, sparseMatrix) {
+    namespace.steps += 1;
     var colNode = node.colHead;
     // Unlink the column head
     colNode.left.right = colNode.right;
     colNode.right.left = colNode.left;
     // Move down through each row from column Head
-    for (var row = colNode.down; row != colNode; row = row.down) {
-      for (var rightNode = row.right; rightNode != row; rightNode = rightNode.right) {
+    for (var row = colNode.down; row !== colNode; row = row.down) {
+      for (var rightNode = row.right; rightNode !== row; rightNode = rightNode.right) {
         // Unlink nodes from row
         rightNode.up.down = rightNode.down;
         rightNode.down.up = rightNode.up;
         // decrement node count from column head
-        sparseMatrix[0][rightNode.col].nodeCount -= 1;
+        sparseMatrix[0][rightNode.col].nodeCount -= 1;        
       }
     }
   }
 
   // Function to uncover a given node. Reverse of cover function.
   function uncover(node, sparseMatrix) {
+    namespace.steps += 1;
     var colNode = node.colHead;
     // Uncover from bottom up, reverse of cover
-    for (var row = colNode.up; row != colNode; row = row.up) {
-      for (var leftNode = row.left; leftNode != row; leftNode = leftNode.left) {
+    for (var row = colNode.up; row !== colNode; row = row.up) {
+      for (var leftNode = row.left; leftNode !== row; leftNode = leftNode.left) {
         // Reconnecting each node to up and down nodes
         leftNode.up.down = leftNode;
         leftNode.down.up = leftNode;
-        sparseMatrix[0][leftNode.col].nodeCount += 1;
+        sparseMatrix[0][leftNode.col].nodeCount += 1;        
       }
     }
     colNode.left.right = colNode;
@@ -215,21 +217,19 @@ function runDLX(inputBoard) {
   }
 
   // Function to search for an exact cover
-  function search(sparseMatrix, h, k, s) {
-    namespace.steps += 1;
-    if (h.right == h) {
+  function search(sparseMatrix, h, k, s) {    
+    if (h.right === h) {
       namespace.solutionFound = true; // flag as solved
-      printAnswer(s);
-      namespace.steps -= 1;
+      printAnswer(s);      
       return;
     }
     else {
       // Recursively run on each node
       var col = minColumnNodes(h);
       cover(col, sparseMatrix);
-      for (var rowNode = col.down; rowNode != col; rowNode = rowNode.down) {
+      for (var rowNode = col.down; rowNode !== col; rowNode = rowNode.down) {
         s.push(rowNode);
-        for (var rightNode = rowNode.right; rightNode != rowNode; rightNode = rightNode.right) {
+        for (var rightNode = rowNode.right; rightNode !== rowNode; rightNode = rightNode.right) {
           cover(rightNode, sparseMatrix);
         }
         if (namespace.solutionFound === true) { // If solved, exit
@@ -239,7 +239,7 @@ function runDLX(inputBoard) {
         // If no solution, backtrack
         s.pop();
         col = rowNode.colHead;
-        for (var leftNode = rowNode.left; leftNode != rowNode; leftNode = leftNode.left) {
+        for (var leftNode = rowNode.left; leftNode !== rowNode; leftNode = leftNode.left) {
           uncover(leftNode, sparseMatrix);
         }
       }

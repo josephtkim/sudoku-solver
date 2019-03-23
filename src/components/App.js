@@ -143,8 +143,8 @@ class App extends Component {
     let clueGridCopy = getGridCopy(this.state.clueGrid);
 
     // Pressed number between 1-9
-    if (parseInt(e.target.id) >= 1 && parseInt(e.target.id) <= 9) {
-      newVal = parseInt(e.target.id);
+    if (parseInt(e.target.id, 10) >= 1 && parseInt(e.target.id, 10) <= 9) {
+      newVal = parseInt(e.target.id, 10);
       gridCopy[curRow-1][curCol-1] = newVal;
       clueGridCopy[curRow-1][curCol-1] = "C";
     }
