@@ -1,5 +1,7 @@
 // Test function to export and import
 function runDLX(inputBoard) {
+  console.log("Testing!!!!");
+
   // ==== Code for Sparse Matrix ====
   class Node {
     constructor(row, col) {
